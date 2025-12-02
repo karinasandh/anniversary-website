@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tebak Kata Sayang 💗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="bg-hearts"></div>
+
+<script>
+for (let i = 0; i < 25; i++) {
+    let h = document.createElement("div");
+    h.className = "bg-heart";
+    h.style.left = Math.random() * 100 + "%";
+    h.style.animationDuration = (6 + Math.random() * 7) + "s";
+    h.style.animationDelay = (Math.random() * 6) + "s";
+    document.getElementById("bg-hearts").appendChild(h);
+}
+</script>
+
+<div class="center-wrap">
+    <div class="login-box" style="padding: 38px 30px;">
+        
+        <h2 class="title">Tebak Kata Dulu Yuk 💗</h2>
+        <p class="subtitle">biar bisa lanjut ke hadiah selanjutnya 🎀</p>
+
+        <h3 id="question" style="color:#7d4560; margin-bottom:14px; font-size:18px; font-style:italic;"></h3>
+
+        <input type="text" id="answerInput" placeholder="Jawabanmu...">
+
+        <p id="feedback" style="margin-top:8px; height:20px;"></p>
+
+        <button class="btn" onclick="checkAnswer()">Cek Jawaban 💘</button>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()" 
+            style="display:none; margin-top:12px; background:#c56e91;">
+            Next ➜
+        </button>
+
+        <a href="page3.html">
+            <button class="btn" id="finishBtn" 
+            style="display:none; margin-top:22px; background:#b85f87;">
+                Lanjut Ke Hadiah 🎁💗
+            </button>
+        </a>
+
+    </div>
+</div>
+
+<audio id="popSound" src="assets/pop.mp3" preload="auto"></audio>
+
+<script>
+const words = [
+    { q: "kata kata apa yang paling sering aku tanyain ke kamu?", a: "kamu sayang aku ga" },
+    { q: "siapa yang paling cantik dan baik hati", a: "karin" },
+    { q: "manusia mana yang ngeselin bgt?", a: "reyga" },
+    { q: "sebelum tidur kita slalu blg apa", a: "love u sayang" }
+];
+
+let current = 0;
+
+document.getElementById("question").innerText = words[current].q;
+
+function checkAnswer() {
+    let inp = document.getElementById("answerInput").value.toLowerCase().trim();
+    let correct = words[current].a;
+    let feedback = document.getElementById("feedback");
+    let pop = document.getElementById("popSound");
+
+    if (inp === correct) {
+        pop.currentTime = 0;
+        pop.play();
+
+        feedback.style.color = "#d46fa7";
+        feedback.innerText = "Benar sayang!! 💗";
+
+        document.getElementById("nextBtn").style.display = "block";
+
+        if (current === words.length - 1) {
+            document.getElementById("finishBtn").style.display = "block";
+            document.getElementById("nextBtn").style.display = "none";
+        }
+
+    } else {
+        feedback.style.color = "#c2598b";
+        feedback.innerText = "Salah sayangkuu, coba lagi yaa 💕";
+    }
+}
+
+function nextQuestion() {
+    current++;
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("answerInput").value = "";
+    document.getElementById("nextBtn").style.display = "none";
+
+    document.getElementById("question").innerText = words[current].q;
+}
+</script>
+
+</body>
+</html>

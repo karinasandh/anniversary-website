@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Times New Roman", serif;
+    background: linear-gradient(180deg, #fff7fb, #ffeef5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* floating subtle hearts */
+.bg-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffd9e8;
+    opacity: 0.45;
+    transform: rotate(45deg);
+    border-radius: 3px;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.bg-heart::before,
+.bg-heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffd9e8;
+    border-radius: 50%;
+}
+
+.bg-heart::before {
+    top: -10px;
+}
+
+.bg-heart::after {
+    left: 10px;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0.5; }
+    100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
+}
+
+.center-wrap {
+    width: 100%;
+    max-width: 380px;
+    padding: 20px;
+    z-index: 10;
+}
+
+.login-box {
+    width: 100%;
+    background: #ffffffd8;
+    border: 1px solid #f3cbd9;
+    padding: 32px 30px;
+    border-radius: 18px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 28px rgba(185, 119, 149, 0.15);
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #823e5a;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #a16f88;
+    margin-bottom: 22px;
+    letter-spacing: 0.5px;
+    font-style: italic;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border: 1px solid #e7cada;
+    background: #fffafd;
+    font-size: 15px;
+    color: #5f3c4c;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #d67aa2;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn:hover {
+    background: #c6618c;
+    transform: translateY(-2px);
+}
+
+.error {
+    margin-top: -8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #b32e55;
+}
