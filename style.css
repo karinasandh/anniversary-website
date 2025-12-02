@@ -39,13 +39,8 @@ body {
     border-radius: 50%;
 }
 
-.bg-heart::before {
-    top: -10px;
-}
-
-.bg-heart::after {
-    left: 10px;
-}
+.bg-heart::before { top: -10px; }
+.bg-heart::after { left: 10px; }
 
 @keyframes floatUp {
     0% { transform: translateY(0) rotate(45deg); opacity: 0.5; }
@@ -119,4 +114,46 @@ input[type="password"] {
     margin-bottom: 10px;
     font-size: 14px;
     color: #b32e55;
+}
+
+/* TAMBAHKAN INI: tampilan khusus layar HP */
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .center-wrap {
+        max-width: 320px;
+        padding: 16px;
+    }
+
+    .login-box {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .error {
+        font-size: 12px;
+    }
 }
